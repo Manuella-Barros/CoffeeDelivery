@@ -1,9 +1,10 @@
 import { ShoppingCart } from "@phosphor-icons/react";
-import { BodySingleProductStyle, FooterSingleProductStyle, HeaderSingleProductStyle, SingleProductStyle } from "./ProductsStyle.styles";
+import * as Style from "./Products.styles";
 import QuantityButton from "../../../../componentes/quantityButton/QuantityButton";
 import { Link } from "react-router-dom";
 
 interface SingleProductProps {
+    id: string,
     name: string,
     price: string,
     description: string,
@@ -11,33 +12,34 @@ interface SingleProductProps {
     imagePath: string,
 }
 
-function SingleProduct({name, price, description, tags, imagePath}: SingleProductProps) {
+function SingleProduct({ id, name, price, description, tags, imagePath }: SingleProductProps) {
+
     return (
-        <SingleProductStyle>
-            <HeaderSingleProductStyle>
+        <Style.SingleProduct>
+            <Style.HeaderSingleProduct>
                 <picture>
                     <img src={imagePath} alt="cafe" />
                 </picture>
                 <div>
                     {
-                        tags.map((tag, i) => {
+                        tags?.map((tag, i) => {
                             return <p key={i}>{tag}</p>
                         })
                     }
                 </div>
-            </HeaderSingleProductStyle>
+            </Style.HeaderSingleProduct>
 
-            <BodySingleProductStyle>
+            <Style.BodySingleProduct>
                 <h3>{name}</h3>
                 <p>{description}</p>
-            </BodySingleProductStyle>
+            </Style.BodySingleProduct>
 
-            <FooterSingleProductStyle>
+            <Style.FooterSingleProduct>
                 <p>R${price}</p>
-                <QuantityButton/>
+                <QuantityButton id={id}/>
                 <Link to={'/purchase'}><ShoppingCart size={24} weight="fill" /></Link>
-            </FooterSingleProductStyle>
-        </SingleProductStyle>
+            </Style.FooterSingleProduct>
+        </Style.SingleProduct>
     )
 }
 

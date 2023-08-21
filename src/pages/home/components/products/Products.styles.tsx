@@ -1,6 +1,6 @@
 import { styled } from "styled-components"
 
-export const ProductsStyle = styled.main`
+export const Products = styled.main` // main home
     margin-top: ${({theme}) => theme["escala-gg"]};
     article{
         flex-wrap: wrap;
@@ -9,17 +9,17 @@ export const ProductsStyle = styled.main`
     }
 `
 
-export const SingleProductStyle = styled.section`
+export const SingleProduct = styled.section`
     background-color: ${({theme}) => theme["neutral-color-3"]};
     margin-top: ${({theme}) => theme["escala-gg"]};
     padding: ${({theme}) => theme["escala-gg"]};
-    width: 30%;
+    width: ${({theme}) => theme["escala-xx-plus"]};
     text-align: center;
     border-top-right-radius: 40px;
     border-bottom-left-radius: 40px;
 `
 
-export const HeaderSingleProductStyle = styled.div`
+export const HeaderSingleProduct = styled.div`
     display: block;
     
     picture img {
@@ -38,7 +38,7 @@ export const HeaderSingleProductStyle = styled.div`
     }
 `
 
-export const BodySingleProductStyle = styled.div`
+export const BodySingleProduct = styled.div`
     margin-block: ${({theme}) => theme["escala-m"]};
     h3{
         padding-bottom: ${({theme}) => theme["escala-xpp"]};
@@ -49,7 +49,7 @@ export const BodySingleProductStyle = styled.div`
     }
 `
 
-export const FooterSingleProductStyle = styled.div`
+export const FooterSingleProduct = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;

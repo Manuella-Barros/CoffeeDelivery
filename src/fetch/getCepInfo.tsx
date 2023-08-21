@@ -1,20 +1,25 @@
-export interface GetCepInfoProps {
+export interface GetCepInfoRequest {
     cep: string,
     city: string,
     neighborhood: string,
     service: string,
     state: string,
     street: string,
-    location: {}
+    location: {} 
 }
 
-async function getCepInfo(userCep = null) {
+interface GetCepInfoProps{
+    cepInput: string,
+}
+
+async function getCepInfo(userCep: string) {
     const fetchApi = await fetch(`https://brasilapi.com.br/api/cep/v2/${userCep}`)
     const request = await fetchApi.json();
 
     if(fetchApi.ok){
         return request;
     }
+
 }
 
 export default getCepInfo;

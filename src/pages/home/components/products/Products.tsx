@@ -1,26 +1,13 @@
-import getSingleProduct from "../../../../fetch/getSingleProduct";
-import { ProductsStyle } from "./ProductsStyle.styles";
+import { GlobalContext, ProductProps } from "../../../../contexts/GlobalContext";
+import * as Style from "./Products.styles";
 import SingleProduct from "./SingleProduct";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 
-interface ProductProps {
-    id: string,
-    name: string,
-    price: string,
-    description: string,
-    tags: string[],
-    imagePath: string,
-}
 function Products() {
-    const [product, setProduct] = useState<ProductProps[] | null>([]);
-
-    useEffect(() => {
-        getSingleProduct()
-            .then(res => setProduct(res))
-    }, [])
+    const { product } = useContext(GlobalContext)
 
     return (
-        <ProductsStyle>
+        <Style.Products>
             <h2>Nossos cafés</h2>
 
             <article>
@@ -28,6 +15,7 @@ function Products() {
                     product?.map(product => {
                         return <SingleProduct
                             key={product.id}
+                            id={product.id}
                             name={product.name}
                             price={product.price}
                             description={product.description}
@@ -37,7 +25,7 @@ function Products() {
                     })
                 }
             </article>
-        </ProductsStyle>
+        </Style.Products>
     );
 }
 

@@ -38,4 +38,4 @@ export const light = {
     'escala-pp': '0.875rem', // 14px
     'escala-xpp': '0.75rem', // 12px
     'escala-xx-pp': '0.625rem', // 10px
-}
+} as const

@@ -1,35 +1,19 @@
-import { useForm } from "react-hook-form";
-import { InputStyle } from "./InputStyle.styles";
-import { useContext, useEffect } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
-import getCepInfo from "../../fetch/getCepInfo";
+import * as Style from "./InputStyle.styles";
+import { HTMLInputTypeAttribute } from "react";
+import { UseFormRegisterReturn } from 'react-hook-form';
 
-function Input( { $registerValue='noValue', ...props }) {
-    const { HandleSetUserCepInfo } = useContext(GlobalContext);
-    const { register, watch } = useForm();
+interface InputProps {
+    type: HTMLInputTypeAttribute,
+    placeholder: string,
+    register: UseFormRegisterReturn,
+    defaultValue?: string | undefined,
+}
 
-    const watchCepInputUser = watch('cepInputUser')
-
-    useEffect(() => {
-        console.log('userData')
-        getCepInfo(watchCepInputUser)
-        .then(res => {
-            if(res){
-                HandleSetUserCepInfo(res)
-            }
-        })
-    }, [watchCepInputUser])
+function Input( { register, ...props }: InputProps) {
 
     return (
-            <InputStyle  {...props} {...register($registerValue)}/>
+            <Style.Input  {...props} {...register}/>
     );
 }
-// function Input( { registerName='', ...props }) {
-//     const { register } = useForm();
-
-//     return (
-//         <InputStyle  {...props}  {...register(registerName)}/>
-//     );
-// }
 
 export default Input;

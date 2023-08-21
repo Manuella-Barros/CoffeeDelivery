@@ -32,8 +32,31 @@ export const OptionsSingleItem = styled.div`
 `
 
 export const BodySingleItem = styled.div`
+    span{
+        padding-block: ${({theme}) => theme["escala-xx-pp"]};
+        display: flex;
+        justify-content: space-between;
+    }
 
+    span:last-child p{
+        font-weight: bolder;
+        font-size: ${({theme}) => theme["escala-m"]};
+    }
 `
-export const FooterSingleItem = styled.div`
-
+export const DeliverButton = styled.button`
+    background-color: ${({theme}) => theme['first-color-2']};
+    text-align: center;
+    color: ${({theme}) => theme['neutral-color-2']};
+    font-size: ${({theme}) => theme['escala-m']};
+    padding-block: ${({theme}) => theme['escala-pp']};
+    border-radius: 10px;
+    font-style: ${({theme}) => theme['fonte-1']};
+    text-transform: uppercase;
+    border: 0;
+    width: 100%;
+    
+    &:hover{
+        color: ${({theme}) => theme['first-color-1']};
+        background-color: ${({theme}) => theme['first-color-3']};
+    }
 `

@@ -6,3 +6,7 @@ export const PurchaseStyle = styled.main`
     gap: 20px;
     margin-top: ${({theme}) => theme["escala-g"]};
 `
+
+export const ErrorMessage = styled.p`
+    color: #FF0F00;
+`

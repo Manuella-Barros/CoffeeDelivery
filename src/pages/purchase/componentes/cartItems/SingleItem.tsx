@@ -1,21 +1,28 @@
 import QuantityButton from "../../../../componentes/quantityButton/QuantityButton";
 import { MainSingleItem, OptionsSingleItem } from "./CartItemsStyle";
 
-function SingleItem() {
+export interface SingleItemProps {
+    id: string,
+    name: string,
+    price: string,
+    imagePath: string,
+}
+
+function SingleItem({...props}: SingleItemProps) {
     return (
         <MainSingleItem>
             <picture>
-                <img src="./images/coffes/coffee(1).png" alt="" />
+                <img src={props.imagePath} alt="" />
             </picture>
 
             <OptionsSingleItem>
-                <p>Expresso tradicional</p>
+                <p>{props.name}</p>
 
-                <QuantityButton/>
+                <QuantityButton id={props.id}/>
             </OptionsSingleItem>
 
             <div>
-                <p>R$00,00</p>
+                <p>R${props.price}</p>
             </div>
         </MainSingleItem>
     );

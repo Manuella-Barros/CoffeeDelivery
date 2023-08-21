@@ -6,6 +6,7 @@ import Navbar from "./componentes/navbar/Navbar"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Purchase from "./pages/purchase/Purchase"
 import { GlobalContextProvider } from "./contexts/GlobalContext"
+import Success from "./pages/success/Success"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/purchase" element={<Purchase/>}/>
+              <Route path="/success" element={<Success/>}/>
             </Routes>
           <GlobalStyle/>
 
