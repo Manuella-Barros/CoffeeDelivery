@@ -8,6 +8,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import Input from "../input/Input";
 import { z } from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ACTIONS } from "../../contexts/GlobalContextInterface";
 
 const schema = z.object({
     cepInput: z.string().length(8),
@@ -15,19 +16,27 @@ const schema = z.object({
 type Data = z.infer<typeof schema>
 
 function Navbar() {
-    const { HandleSetUserCepInfo, userData } = useContext(GlobalContext)
+    const { userData, handleUserDataDispatch } = useContext(GlobalContext)
     const { register, handleSubmit} = useForm<Data>({
         resolver: zodResolver(schema)
     });
     
     function handleFetchRequest(data: Data){
+        handleUserDataDispatch({
+            type: ACTIONS.RESET_USER_INFO,
+        })
+
         getCepInformation(data.cepInput)
         .then(res => { 
             if(res){
-                HandleSetUserCepInfo(res)
+                handleUserDataDispatch({
+                    type: ACTIONS.SET_USER_ADRESS_INFO,
+                    payload: res,
+                })
             }
         })
     }
+
     
     return (
         <NavbarStyle>

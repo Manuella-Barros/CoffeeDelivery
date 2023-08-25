@@ -1,11 +1,25 @@
+import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 import * as Style from "./CartItemsStyle";
 import SingleItem from "./SingleItem";
 import { useContext } from 'react';
 
 function CartItems() {
-    const { selectedProducts, subtotal } = useContext(GlobalContext)
+    const { selectedProducts, subtotal, userData } = useContext(GlobalContext)
+    const navigate = useNavigate();
     const taxa: number = 5;
+
+    const isDisabled = !(!!userData?.userAdress.houseNumber && !!userData?.userAdress.cep && !!userData?.paymentType)
+
+    // console.log(!!userData?.userAdress.houseNumber)
+    // console.log(!!userData?.userAdress.cep)
+    // console.log(!!userData?.paymentType.paymentType)
+    
+    // console.log(isDisabled)
+
+    function handleDeliverButtonClick(){
+        navigate('/success')
+    }
 
     
     return (
@@ -35,7 +49,7 @@ function CartItems() {
                 </Style.BodySingleItem>
                 
                 <div>
-                    <Style.DeliverButton type="submit">Confirmar pedido</Style.DeliverButton>
+                    <Style.DeliverButton onClick={handleDeliverButtonClick} disabled={isDisabled} type="submit">Confirmar pedido</Style.DeliverButton>
                 </div>
             </Style.MainCartItemStyle>    
         </section>

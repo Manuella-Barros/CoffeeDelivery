@@ -59,4 +59,10 @@ export const DeliverButton = styled.button`
         color: ${({theme}) => theme['first-color-1']};
         background-color: ${({theme}) => theme['first-color-3']};
     }
+    
+    &:disabled{
+        color: ${({theme}) => theme['first-color-1']};
+        background-color: ${({theme}) => theme['first-color-3']};
+        cursor: not-allowed;
+    }
 `

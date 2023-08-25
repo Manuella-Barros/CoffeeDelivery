@@ -23,18 +23,22 @@ export const ContentSuccess = styled.div`
     justify-content: center;
     align-items: center;
     
+    
     div{
-        padding: 2rem;
         background-color: ${({theme}) => theme['neutral-color-1']};
         width: 99%;
         height: 98.5%;
         border-top-right-radius: 30px;
         border-bottom-left-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5rem;
+        gap: 1rem;
     }
 `
 
 export const DeliveryInfo = styled.section`
-    margin-bottom: 2rem;
     display: grid;
     grid-template-columns: 0.1fr 1fr;
     grid-template-rows: 1fr 1fr;

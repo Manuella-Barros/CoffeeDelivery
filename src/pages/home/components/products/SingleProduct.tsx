@@ -37,7 +37,7 @@ function SingleProduct({ id, name, price, description, tags, imagePath }: Single
             <Style.FooterSingleProduct>
                 <p>R${price}</p>
                 <QuantityButton id={id}/>
-                <Link to={'/purchase'}><ShoppingCart size={24} weight="fill" /></Link>
+                <Link to={'/purchase'}><ShoppingCart size={20} weight="fill" /></Link>
             </Style.FooterSingleProduct>
         </Style.SingleProduct>
     )

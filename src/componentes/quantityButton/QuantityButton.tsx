@@ -1,4 +1,4 @@
-import { GlobalContext, userCartList } from "../../contexts/GlobalContext";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import { QuantityButtonStyle } from "./QuantityButtonStyle.styles";
 import { useContext } from "react";
 

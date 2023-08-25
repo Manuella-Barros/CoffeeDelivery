@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Purchase from "./pages/purchase/Purchase"
 import { GlobalContextProvider } from "./contexts/GlobalContext"
 import Success from "./pages/success/Success"
+import { ProtectedRoutePurchase, ProtectedRouteSuccess } from "./ProtectedRoutes/ProtectedRoute"
 
 function App() {
   return (
@@ -17,8 +18,12 @@ function App() {
             <Navbar/>
             <Routes>
               <Route path="/" element={<Home/>}/>
-              <Route path="/purchase" element={<Purchase/>}/>
-              <Route path="/success" element={<Success/>}/>
+              <Route path="/purchase" element={
+                <ProtectedRoutePurchase><Purchase/></ProtectedRoutePurchase>
+              }/>
+              <Route path="/success" element={
+                <ProtectedRouteSuccess><Success/></ProtectedRouteSuccess>
+              }/>
             </Routes>
           <GlobalStyle/>
 

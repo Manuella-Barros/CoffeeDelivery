@@ -1,4 +1,4 @@
-import { GlobalContext, ProductProps } from "../../../../contexts/GlobalContext";
+import { GlobalContext } from "../../../../contexts/GlobalContext";
 import * as Style from "./Products.styles";
 import SingleProduct from "./SingleProduct";
 import { useContext } from "react";

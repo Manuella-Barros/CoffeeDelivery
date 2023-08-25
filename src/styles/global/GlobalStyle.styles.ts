@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     body{
         background-color: ${({theme}) => theme["neutral-color-1"]};
-        width: 70%;
+        width: 80vw;
         margin: auto;
     }
 

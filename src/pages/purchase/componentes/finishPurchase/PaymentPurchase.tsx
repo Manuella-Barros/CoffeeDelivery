@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
+import { ACTIONS } from "../../../../contexts/GlobalContextInterface";
 
 const schema = z.object({
     paymentType: z.string().min(1),
@@ -12,13 +13,16 @@ const schema = z.object({
 export type PaymentFormData = z.infer<typeof schema>;
 
 function PaymentPurchase() {
-    const { handlePurchaseValidation } = useContext(GlobalContext)
+    const { handleUserDataDispatch } = useContext(GlobalContext)
     const { register, handleSubmit } = useForm<PaymentFormData>({
         resolver: zodResolver(schema)
     });
 
     function handleFormSubmit(data: PaymentFormData){
-        handlePurchaseValidation(data)
+        handleUserDataDispatch({
+            type: ACTIONS.SET_USER_PAYMENTTYPE,
+            payload: data,
+        })
     }
 
 

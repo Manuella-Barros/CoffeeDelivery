@@ -1,10 +1,9 @@
 import { createContext, useReducer, useState, useEffect } from 'react';
-import { GetCepInfoRequest } from '../fetch/getCepInfo';
 import getSingleProduct from '../fetch/getSingleProduct';
 import { ACTIONS, ActionProps, GlobalContextProps, MathType, ProductProps, UserDataProps } from './GlobalContextInterface';
 import { SingleItemProps } from '../pages/purchase/componentes/cartItems/SingleItem';
-import { AdressFormData } from '../pages/purchase/componentes/finishPurchase/AddressPurchase';
-import { PaymentFormData } from '../pages/purchase/componentes/finishPurchase/PaymentPurchase';
+
+
 
 export const GlobalContext = createContext({} as GlobalContextProps);
 
@@ -12,16 +11,24 @@ export const GlobalContextProvider = ({children}: {children: React.ReactNode}) =
     //                     FUNÇÕES PARA USE REDUCER
     function reducer(state:UserDataProps, action: ActionProps):UserDataProps{
         switch(action.type){
+            // ADD INFO DO ENDEREÇO DO USER DE ACORDO COM O CEP
             case 'SET_USER_ADRESS_INFO':
                 return {...state, 
-                    userAdress: {
-                        cep: action.payload.cepInfo.cep,
-                        street: action.payload.cepInfo.street,
-                        neighborhood: action.payload.cepInfo.neighborhood,
-                        city: action.payload.cepInfo.city,
-                        state: action.payload.cepInfo.state,
-                    }
+                    userAdress: action.payload
                 }
+            
+            case 'SET_USER_HOUSENUMBER':
+                return {...state,
+                    userAdress: {...state.userAdress, 
+                        houseNumber: action.payload
+                    }
+                } 
+            
+            case 'SET_USER_PAYMENTTYPE':
+                return {...state,
+                    paymentType: {...action.payload}
+                }
+
             case 'ADD_CART_LIST':
                 const currentItem = state.userCartList.find(item => item.id == action.payload.id)
 
@@ -59,8 +66,7 @@ export const GlobalContextProvider = ({children}: {children: React.ReactNode}) =
                     }
                 }
             case 'RESET_USER_INFO':
-                return action.payload.initialState
-
+                return state
             default:
                 return state    
         }
@@ -74,9 +80,9 @@ export const GlobalContextProvider = ({children}: {children: React.ReactNode}) =
             state: '',
             houseNumber: '',
             complement: '',
-            paymentType: ''
         },
         userCartList: [],
+        paymentType: {paymentType: ''},
     }
     //useReducer(função que dita oq ocorre quando dispatch for ativado, valores iniciais)
     const [userData, dispatch] = useReducer(reducer, initialState)
@@ -117,25 +123,13 @@ export const GlobalContextProvider = ({children}: {children: React.ReactNode}) =
     }, [userData?.userCartList])
 
     
-
-
-    //                              FUNÇÕES
-    // ADD INFO DO ENDEREÇO DO USER DE ACORDO COM O CEP
-    function HandleSetUserCepInfo(cepInfo: GetCepInfoRequest){
+    function handleUserDataDispatch({type, payload}: ActionProps){
         dispatch({
-            type: ACTIONS.RESET_USER_INFO,
-            payload: {
-                initialState
-            }
-        })
-
-        dispatch({
-            type: ACTIONS.SET_USER_ADRESS_INFO,
-            payload: {
-                cepInfo
-            }
+            type: type,
+            payload: payload,
         })
     }
+
 
     // ADD INTEM NO CARRINHO DE COMPRAS
     function handleCartListChange(id: string, mathType: MathType){
@@ -159,13 +153,11 @@ export const GlobalContextProvider = ({children}: {children: React.ReactNode}) =
             })
         }
     }
-    // JUNTA AS INFO DO PURCHASE
-    function handlePurchaseValidation(inputInfo: AdressFormData | PaymentFormData | string){
-        console.log(inputInfo)
-    }
+    
+    //console.log(userData)
 
     return (
-        <GlobalContext.Provider value={{userData, HandleSetUserCepInfo,handleCartListChange, product, setProduct, selectedProducts, subtotal, handlePurchaseValidation}}>
+        <GlobalContext.Provider value={{userData,handleCartListChange, product, setProduct, selectedProducts, subtotal, handleUserDataDispatch}}>
             {children}
         </GlobalContext.Provider>
     )

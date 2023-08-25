@@ -8,10 +8,9 @@ export interface GlobalContextProps { // Do q vai ser exportado
     product: ProductProps[] | null,
     selectedProducts: SingleItemProps[] | undefined,
     subtotal: number,
-    HandleSetUserCepInfo: (a: GetCepInfoRequest) => void,
-    handleCartListChange: (a: string, b: MathType) => void,
     setProduct: React.Dispatch<React.SetStateAction<ProductProps[] | null>>,
-    handlePurchaseValidation: (a: AdressFormData | PaymentFormData | string) => void,
+    handleCartListChange: (a: string, b: MathType) => void,
+    handleUserDataDispatch: (a: ActionProps) => void
 }
 export interface ProductProps {
     id: string,
@@ -26,13 +25,15 @@ export const ACTIONS = {
     ADD_CART_LIST: 'ADD_CART_LIST',
     RESET_USER_INFO: 'RESET_USER_INFO',
     REMOVE_CART_lIST: 'REMOVE_CART_lIST',
+    SET_USER_HOUSENUMBER: 'SET_USER_HOUSENUMBER',
+    SET_USER_PAYMENTTYPE: 'SET_USER_PAYMENTTYPE', 
 } as const
 
 export type ActionsType = typeof ACTIONS[keyof typeof ACTIONS];
 
 export interface ActionProps {
     type: ActionsType,
-    payload: any
+    payload?: any
 }
 export type userAdressProps = { // Os tipo que tem nas infos de endereço
     cep: string,
@@ -50,5 +51,6 @@ export type userCartList = {// Os tipo que tem nas infos do carrinho
 export interface UserDataProps {
     userAdress: userAdressProps
     userCartList: userCartList[]
+    paymentType: PaymentFormData,
 }
 export type MathType = "add" | "subtract";
