@@ -8,10 +8,6 @@ export interface GetCepInfoRequest {
     location: {} 
 }
 
-interface GetCepInfoProps{
-    cepInput: string,
-}
-
 async function getCepInfo(userCep: string) {
     const fetchApi = await fetch(`https://brasilapi.com.br/api/cep/v2/${userCep}`)
     const request = await fetchApi.json();

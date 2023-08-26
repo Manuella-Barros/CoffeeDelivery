@@ -1,6 +1,4 @@
-import { GetCepInfoRequest } from "../fetch/getCepInfo";
 import { SingleItemProps } from '../pages/purchase/componentes/cartItems/SingleItem';
-import { AdressFormData } from "../pages/purchase/componentes/finishPurchase/AddressPurchase";
 import { PaymentFormData } from "../pages/purchase/componentes/finishPurchase/PaymentPurchase";
 
 export interface GlobalContextProps { // Do q vai ser exportado
