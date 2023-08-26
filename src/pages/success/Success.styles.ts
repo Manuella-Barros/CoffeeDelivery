@@ -5,6 +5,10 @@ export const BodySuccess = styled.article`
     justify-content: space-between;
     gap: 2rem;
     margin-top: 2rem;
+
+    @media(max-width: 500px){
+        flex-direction: column;
+    }
 `
 export const PictureSuccess = styled.picture`
     width: 50%;
@@ -12,6 +16,10 @@ export const PictureSuccess = styled.picture`
     img{
         max-width: 100%;
         max-height: 100%;
+    }
+
+    @media(max-width: 500px){
+        width: 100%;
     }
 `
 export const ContentSuccess = styled.div`
@@ -35,6 +43,11 @@ export const ContentSuccess = styled.div`
         justify-content: center;
         padding-left: 5rem;
         gap: 1rem;
+    }
+
+    @media(max-width: 500px){
+        width: 100%;
+        height: 16rem;
     }
 `
 

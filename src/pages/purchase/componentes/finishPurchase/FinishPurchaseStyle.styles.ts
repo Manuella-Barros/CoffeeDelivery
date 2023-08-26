@@ -94,6 +94,10 @@ export const PaymentHeader = styled.div`
 export const PaymentBody = styled.form`
     display: flex;
     justify-content: space-between;
+    @media(max-width: 500px){
+        gap: 10px;
+        flex-wrap: wrap;
+    }
     
     label{
         display: flex;
@@ -112,6 +116,10 @@ export const PaymentBody = styled.form`
         span{
             color: ${({theme}) => theme["second-color-2"]};
 
+        }
+
+        @media(max-width: 500px){
+            padding: 8px;
         }
     }
 

@@ -10,9 +10,11 @@ export const MainCartItemStyle = styled.article`
 `
 export const MainSingleItem = styled.div`
     display: flex;
+    justify-content: space-between;
     border-bottom: solid 2px ${({theme}) => theme["neutral-color-5"]};
     padding-bottom: ${({theme}) => theme["escala-xx-pp"]};
     margin-bottom: ${({theme}) => theme["escala-p"]};
+    gap: 10px;
 
     picture{
         width: 30%;
@@ -24,7 +26,6 @@ export const MainSingleItem = styled.div`
 
 export const OptionsSingleItem = styled.div`
     text-align: center;
-    padding-inline: ${({theme}) => theme["escala-m"]};
 
     p:first-child{
         padding-bottom: 5px;

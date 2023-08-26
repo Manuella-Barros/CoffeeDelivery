@@ -59,14 +59,6 @@ function Navbar() {
                             />
                         }
                     </form>
-                    {/* {
-                        !userData?.userAdress.state &&
-                        <input 
-                            type="number" 
-                            placeholder="Insira seu CEP aqui" 
-                            {...register('cepInput')}
-                        />
-                    } */}
                     {
                         userData?.userAdress.state &&
                         <p>{userData?.userAdress.city}, {userData?.userAdress.state}</p>

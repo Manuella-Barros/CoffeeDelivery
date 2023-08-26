@@ -6,18 +6,23 @@ export const QuantityButtonStyle = styled.div`
     align-items: center;
     
     button{
-        font-size: ${({theme}) => theme["escala-g"]};
         color: ${({theme}) => theme["second-color-2"]};
         border: none;
         font-weight: bold;
         cursor: pointer;
+
+        &:hover{
+            background-color: ${({theme}) => theme["second-color-2"]};
+            color: ${({theme}) => theme["neutral-color-1"]};
+        }
     }
     button,
     p{
         background-color: ${({theme}) => theme["neutral-color-5"]};
         font-family: ${({theme}) => theme["fonte-1"]};
-        font-size: ${({theme}) => theme["escala-m"]};
+        font-size: 0.9rem;
         padding-inline: ${({theme}) => theme["escala-xx-pp"]};
+        padding-block: 3px;
     }
     
     /* button, p{

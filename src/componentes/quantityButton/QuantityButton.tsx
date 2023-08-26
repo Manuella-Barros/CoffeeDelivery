@@ -12,13 +12,13 @@ function QuantityButton({ id }: QuantityButtonProps) {
 
     return (
         <QuantityButtonStyle>
-            <button onClick={() => handleCartListChange(id, 'add')}>+</button>
+            <button onClick={() => handleCartListChange(id, 'subtract')}>-</button>
             
             {
                 selectedItem? <p>{selectedItem.quantity}</p> : <p>0</p>
             }
 
-            <button onClick={() => handleCartListChange(id, 'subtract')}>-</button>
+            <button onClick={() => handleCartListChange(id, 'add')}>+</button>
         </QuantityButtonStyle>
     );
 }

@@ -115,7 +115,7 @@ export const GlobalContextProvider = ({children}: {children: React.ReactNode}) =
             const quant = (userData?.userCartList?.find(item => prod.id == item.id))?.quantity
 
             if(quant){
-                setSubtotal(prevValue => prevValue + Number((Number(prod.price) * quant).toFixed(2)));
+                setSubtotal(prevValue => prevValue + Number((Number(prod.price) * quant)));
             }
         })
 
@@ -129,6 +129,7 @@ export const GlobalContextProvider = ({children}: {children: React.ReactNode}) =
             payload: payload,
         })
     }
+
 
 
     // ADD INTEM NO CARRINHO DE COMPRAS
@@ -154,8 +155,6 @@ export const GlobalContextProvider = ({children}: {children: React.ReactNode}) =
         }
     }
     
-    //console.log(userData)
-
     return (
         <GlobalContext.Provider value={{userData,handleCartListChange, product, setProduct, selectedProducts, subtotal, handleUserDataDispatch}}>
             {children}

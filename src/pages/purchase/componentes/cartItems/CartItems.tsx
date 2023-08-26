@@ -11,12 +11,6 @@ function CartItems() {
 
     const isDisabled = !(!!userData?.userAdress.houseNumber && !!userData?.userAdress.cep && !!userData?.paymentType)
 
-    // console.log(!!userData?.userAdress.houseNumber)
-    // console.log(!!userData?.userAdress.cep)
-    // console.log(!!userData?.paymentType.paymentType)
-    
-    // console.log(isDisabled)
-
     function handleDeliverButtonClick(){
         navigate('/success')
     }
@@ -36,7 +30,7 @@ function CartItems() {
                 <Style.BodySingleItem>
                     <span>
                         <p>Subtotal</p>
-                        <p>R${subtotal}</p>
+                        <p>R${subtotal.toFixed(2)}</p>
                     </span>
                     <span>
                         <p>Taxa de entrega</p>
@@ -44,7 +38,7 @@ function CartItems() {
                     </span>
                     <span>
                         <p>Total</p>
-                        <p>R${subtotal + taxa}</p>
+                        <p>R${(subtotal + taxa).toFixed(2)}</p>
                     </span>
                 </Style.BodySingleItem>
                 

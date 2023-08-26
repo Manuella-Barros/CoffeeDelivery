@@ -38,4 +38,11 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${({theme}) => theme["fonte-1"]};
         font-size: ${({theme}) => theme["escala-p"]};
     }
+
+    @media(max-width: 500px){
+        h1{
+            font-size: ${({theme}) => theme["escala-gg"]};
+            line-height: ${({theme}) => theme["escala-xgg"]};
+        }
+    }
 `

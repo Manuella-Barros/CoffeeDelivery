@@ -12,6 +12,15 @@ export const HeaderStyle = styled.header`
     picture img{
         width: 100%;
     }
+
+    @media(max-width: 500px){
+        flex-direction: column-reverse;
+
+        picture{
+            width: 60%;
+        }
+
+    }
 `
 
 export const AboutStyle = styled.article`
@@ -34,6 +43,10 @@ export const AboutStyle = styled.article`
         span:nth-child(1){
             background-color: ${({theme}) => theme['second-color-2']};
         }
+    }
+
+    @media(max-width: 500px){
+        justify-content: center;
     }
 
 `

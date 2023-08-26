@@ -10,11 +10,19 @@ export const NavbarStyle = styled.nav`
         width: 27%;
         justify-content: space-between;
         gap: ${({theme}) => theme["escala-m"]};
+        
+        @media(max-width: 500px){
+            width: 60%;
+        }
     }
 `
 
 export const PictureStyle = styled.picture`
     width: 73%;
+
+    @media(max-width: 500px){
+        width: 40%;
+    }
 `
 
 export const NavBase = styled.section`
